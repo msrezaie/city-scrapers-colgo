@@ -1,5 +1,5 @@
 """
-A Mixin & Mixin Meta tempalte for scrapers that share a common data source.
+A Mixin & Mixin Meta template for scrapers that share a common data source.
 
 Required class variables (enforced by metaclass):
     name (str): Spider name/slug (e.g., "tulok_city_council")
@@ -16,7 +16,7 @@ from city_scrapers_core.items import Meeting
 from city_scrapers_core.spiders import CityScrapersSpider
 
 
-class SpiderfactorytemplateMixinMeta(type):
+class SpiderFactoryTemplateMixinMeta(type):
     """
     Metaclass that enforces the implementation of required static
     variables in child classes that inherit from the "Mixin" class.
@@ -37,7 +37,7 @@ class SpiderfactorytemplateMixinMeta(type):
 
 
 
-class SpiderfactorytemplateMixin(CityScrapersSpider, metaclass=SpiderfactorytemplateMixinMeta):
+class SpiderFactoryTemplateMixin(CityScrapersSpider, metaclass=SpiderFactoryTemplateMixinMeta):
 
      # Required to be overridden (enforced by metaclass)
     name = None

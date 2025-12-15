@@ -4,9 +4,9 @@ from city_scrapers_core.constants import NOT_CLASSIFIED
 from city_scrapers_core.utils import file_response
 from freezegun import freeze_time
 
-from city_scrapers.spiders import SpiderfactorytemplateSpider
+from city_scrapers.spiders import SpiderFactoryTemplate
 
-ExampleSpider1 = SpiderfactorytemplateSpider.ExampleSpider1
+ExampleSpider1 = SpiderFactoryTemplate.ExampleSpider1
 
 test_response = file_response(
     join(dirname(__file__), "files", "example_spider_1.html"),
