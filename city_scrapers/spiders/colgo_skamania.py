@@ -11,7 +11,7 @@ spider_configs = [
     {
         "class_name": "SkamaniaBoccSpider",
         "name": "colgo_ska_bocc",
-        "agency": "Board of County Commissioners",
+        "agency": "Skamania County Board of Commissioners",
         "agenda_param": "agendas-minutes-meeting-audio/-folder-36#docfold_2924_1241_328_36",  # noqa
         "location": _location,
         "time_notes": (

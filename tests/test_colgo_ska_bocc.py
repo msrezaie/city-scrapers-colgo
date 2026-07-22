@@ -88,7 +88,7 @@ def test_source():
 def test_links():
     assert parsed_items[0]["links"] == [
         {
-            "href": "https://www.skamaniacounty.gov/home/showpublisheddocument/17452/639050307619370000",
+            "href": "https://www.skamaniacounty.gov/home/showpublisheddocument/17452/639050307619370000",  # noqa
             "title": "Agenda",
         }
     ]
