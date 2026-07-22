@@ -34,7 +34,7 @@ def test_start_requests_impersonate():
 
 
 def test_title():
-    assert parsed_items[0]["title"] == "Board of County Commissioners"
+    assert parsed_items[0]["title"] == "Skamania County Board of Commissioners"
 
 
 def test_description():
@@ -63,7 +63,7 @@ def test_time_notes():
 def test_id():
     assert (
         parsed_items[0]["id"]
-        == "colgo_ska_bocc/202601270930/x/board_of_county_commissioners"
+        == "colgo_ska_bocc/202601270930/x/skamania_county_board_of_commissioners"
     )
 
 
