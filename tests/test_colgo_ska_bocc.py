@@ -9,6 +9,7 @@ from freezegun import freeze_time
 from city_scrapers.spiders import colgo_skamania
 
 SkamaniaBoccSpider = colgo_skamania.SkamaniaBoccSpider
+SkamaniaCountyMixin = colgo_skamania.SkamaniaCountyMixin
 
 test_response = file_response(
     join(dirname(__file__), "files", "skamania_county_bocc.html"),
@@ -31,6 +32,18 @@ def test_start_requests_impersonate():
     req = requests[0]
     assert req.meta.get("impersonate") == "chrome131"
     assert req.url == f"{spider.main_url}/{spider.agenda_param}"
+    assert (
+        SkamaniaCountyMixin.custom_settings["DOWNLOAD_HANDLERS"]["http"]
+        == "scrapy_impersonate.ImpersonateDownloadHandler"
+    )
+    assert (
+        SkamaniaCountyMixin.custom_settings["DOWNLOAD_HANDLERS"]["https"]
+        == "scrapy_impersonate.ImpersonateDownloadHandler"
+    )
+    assert (
+        SkamaniaCountyMixin.custom_settings["TWISTED_REACTOR"]
+        == "twisted.internet.asyncioreactor.AsyncioSelectorReactor"
+    )
 
 
 def test_title():
