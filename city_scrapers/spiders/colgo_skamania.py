@@ -11,7 +11,7 @@ spider_configs = [
     {
         "class_name": "SkamaniaBoccSpider",
         "name": "colgo_ska_bocc",
-        "agency": "Skamania County Board of Commissioners",
+        "agency": "Board of County Commissioners",
         "agency_name": "Skamania County Board of Commissioners",
         "agenda_param": "agendas-minutes-meeting-audio/-folder-36#docfold_2924_1241_328_36",  # noqa
         "location": _location,
@@ -28,7 +28,7 @@ spider_configs = [
     {
         "class_name": "SkamaniaBohSpider",
         "name": "colgo_ska_boh",
-        "agency": "Skamania County Board of Health",
+        "agency": "Board of Health",
         "agency_name": "Skamania County Board of Commissioners",
         "agenda_param": "board-of-health/-folder-162#docfold_2001_2047_350_162",
         "location": _location,
@@ -43,7 +43,7 @@ spider_configs = [
     {
         "class_name": "SkamaniaEmsbSpider",
         "name": "colgo_ska_emsb",
-        "agency": "Skamania County Board of EMS District #1",
+        "agency": "Board of EMS District #1",
         "agency_name": "Skamania County Board of Commissioners",
         "agenda_param": "board-of-ems-district-1/-folder-619#docfold_2001_3132_1205_619",  # noqa
         "location": _location,
