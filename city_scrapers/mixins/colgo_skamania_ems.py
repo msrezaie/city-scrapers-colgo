@@ -159,7 +159,7 @@ class SkamaniaEMSMixin(CityScrapersSpider, metaclass=SkamaniaCountyMixinMeta):
             yield self._sharepoint_list_request(
                 f"{self.sharepoint_list_url}&{next_href.lstrip('?')}",
                 self._parse_folder_items,
-                meta={**response.meta},
+                meta={"folder_name": folder_name},
             )
 
         self._pending_sharepoint_requests -= 1

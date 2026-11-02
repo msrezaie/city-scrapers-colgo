@@ -1,0 +1,56 @@
+name: Debug colgo_ska_emsb
+
+on:
+  push:
+    branches:
+      - debug-skamania
+  workflow_dispatch:
+
+env:
+  PYTHON_VERSION: 3.12
+  PIPENV_VENV_IN_PROJECT: true
+  SCRAPY_SETTINGS_MODULE: city_scrapers.settings.base # no Azure/Sentry
+
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip pipenv
+          pipenv sync
+
+      - name: Runner IP
+        run: curl -sS https://api.ipify.org; echo
+
+      - name: Fetch calendar page as the spider sees it
+        run: |
+          export PYTHONPATH=$(pwd):$PYTHONPATH
+          pipenv run scrapy fetch --spider colgo_ska_emsb \
+            "https://skamaniaems.com/board-of-commissioners/" > calendar.html 2> fetch.log || true
+          wc -c calendar.html
+          grep -c "<table" calendar.html || true
+          head -c 2000 calendar.html
+
+      - name: Run spider with full logging
+        run: |
+          export PYTHONPATH=$(pwd):$PYTHONPATH
+          pipenv run scrapy crawl colgo_ska_emsb -O output.json \
+            -s LOG_LEVEL=DEBUG -s COOKIES_DEBUG=True 2>&1 | tee crawl.log
+          grep -E "Crawled|ERROR|item_scraped_count" crawl.log || true
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: skamania-debug
+          path: |
+            calendar.html
+            fetch.log
+            crawl.log
+            output.json
