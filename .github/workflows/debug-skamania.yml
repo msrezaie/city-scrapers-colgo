@@ -9,7 +9,7 @@ on:
 env:
   PYTHON_VERSION: 3.12
   PIPENV_VENV_IN_PROJECT: true
-  SCRAPY_SETTINGS_MODULE: city_scrapers.settings.staging
+  SCRAPY_SETTINGS_MODULE: city_scrapers.settings.base
 
 jobs:
   debug:
@@ -25,9 +25,6 @@ jobs:
         run: |
           python -m pip install --upgrade pip pipenv
           pipenv sync
-
-      - name: Runner IP
-        run: curl -sS https://api.ipify.org; echo
 
       - name: Fetch calendar page as the spider sees it
         run: |
