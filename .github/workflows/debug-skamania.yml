@@ -3,7 +3,7 @@ name: Debug colgo_ska_emsb
 on:
   push:
     branches:
-      - debug-skamania
+      - debug_skamania
   workflow_dispatch:
 
 env:
