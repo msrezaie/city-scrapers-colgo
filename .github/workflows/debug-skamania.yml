@@ -9,7 +9,7 @@ on:
 env:
   PYTHON_VERSION: 3.12
   PIPENV_VENV_IN_PROJECT: true
-  SCRAPY_SETTINGS_MODULE: city_scrapers.settings.base # no Azure/Sentry
+  SCRAPY_SETTINGS_MODULE: city_scrapers.settings.staging
 
 jobs:
   debug:
